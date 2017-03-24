@@ -7,6 +7,7 @@
 #include "revolucionario.h"
 #include "piratas.h"
 #include <vector>
+#include <fstream>
 using namespace std;
 int main(){
 	vector<fruta*> frutas;
@@ -20,7 +21,7 @@ int main(){
 	piratas* pir4 = new piratas("Humano", 19 , " Usopp" ,true,false,false,"East Blue","Tripulacion De Luffy" , "Francotirado");
 	piratas* pir5 = new piratas("Humano", 19 , " Vinsmoke Sanji" ,true,true,false,"North Blue","Tripulacion De Luffy" , "Cocinero");
 	piratas* pir6 = new piratas("Reno", 15 , " Tony Tony Chopper" ,zo,false,false,false,"East Blue","Tripulacion de Luffy" , "Medico");
-
+	piratas* pir7 = new piratas("Reno", 15 , "Nico Robin" ,zo,false,false,false,"East Blue","Tripulacion de Luffy" , "Medico");
 	seres.push_back(pir);
 	char resp='s';
 	while(resp =='s' || resp=='S'){
@@ -50,9 +51,13 @@ int main(){
 		cin >> nombre;
 		cout << "tiene Fruta 1)si 2)no :";
 		cin >> f;
+		int opfruto;
+		paramecia* parame;
+		zoan* zo2;
+		logia* log;
 		if(f==1){
 			string nomfruto;
-			int opfruto;
+			
 			
 			string description;
 			cout << "ingrese el nombre del fruto :";
@@ -62,7 +67,7 @@ int main(){
 			if(opfruto==1){
 				cout << "ingrese la descripcion :" ;
 				cin >> description;
-				paramecia* parame = new paramecia(nomfruto,description);
+				parame = new paramecia(nomfruto,description);
 			}
 			else if (opfruto==2){
 				string tipofruta;
@@ -71,13 +76,13 @@ int main(){
 				cin >> tipofruta;
 				cout << "ingrese el animal :";
 				cin >> animal;
-				zoan* zo2 = new zoan (nomfruto,tipofruta,animal);
+				zo2 = new zoan (nomfruto,tipofruta,animal);
 			}
 			else if(opfruto==3){
 				string elemento;
 				cout << "ingrese el elemento :";
 				cin >> elemento;
-				logia* log = new logia(nomfruto,elemento);
+				log = new logia(nomfruto,elemento);
 			}
 
 			
@@ -121,25 +126,85 @@ int main(){
 			cin >> fecha;
 			cout << " ingrese el rango 1)cadete 2)teniente 3)vice-almirante 4)almirante 5)almirante de flota" ;
 			if(oprango==1){
-
+				rango="cadete";
 			}
 			else if(oprango==2){
-
+				rango="teniente";
 			}
 			else if(oprango==3){
-
+				rango="vice-almirante";
 			}
 			else if(oprango==4){
-
+				rango="almirante";
 			}
 			else if(oprango==5){
-
+				rango="almirante de flota";
 			}
+			if(ophak==1){
+				if(opfruto==1){
+					marina* mar = new marina(raza,edad,nombre,parame,haki1,haki2,haki3,fecha,rango);
+				}
+				else if(opfruto==2){
+					marina* mar = new marina(raza,edad,nombre,zo2,haki1,haki2,haki3,fecha,rango);
+				}
+				else if(opfruto==3){
+					marina* mar = new marina(raza,edad,nombre,log,haki1,haki2,haki3,fecha,rango);
+				}
+				
+			}
+			else{
+				marina* mar = new marina(raza,edad,nombre,haki1,haki2,haki3,fecha,rango);	
+			}
+
 		}
 		else if(bando==2){
+			string oceano;
+			string tripulacio;
+			string funcion ;
+			cout << "ingrese el oceno :";
+			cin >> oceano;
+			cout << " ingrese la Tripulacion :";
+			cin >> tripulacio;
+			cout << " ingrese la funcion";
+			cin >>  funcion;
+			if(ophak==1){
+				if(opfruto==1){
+					piratas* pr = new piratas(raza,edad,nombre,parame,haki1,haki2,haki3,oceano,tripulacio,funcion);
+				}
+				else if(opfruto==2){
+					piratas* pr = new piratas(raza,edad,nombre,zo2,haki1,haki2,haki3,oceano,tripulacio,funcion);
+				}
+				else if(opfruto==3){
+					piratas* pr = new piratas(raza,edad,nombre,log,haki1,haki2,haki3,oceano,tripulacio,funcion);
+				}
+				
+			}
+			else{
+				piratas* pr = new piratas(raza,edad,nombre,haki1,haki2,haki3,oceano,tripulacio,funcion);	
+			}
+
+
 
 		}
 		else if(bando==3){
+			string fecha;
+			cout << "Ingrese la fecha :" ;
+			cin >> fecha;
+			if(ophak==1){
+				if(opfruto==1){
+					revolucionario* rv = new revolucionario(raza,edad,nombre,parame,haki1,haki2,haki3,fecha);
+				}
+				else if(opfruto==2){
+					revolucionario* rv = new revolucionario(raza,edad,nombre,zo2,haki1,haki2,haki3,fecha);
+				}
+				else if(opfruto==3){
+					revolucionario* rv = new revolucionario(raza,edad,nombre,log,haki1,haki2,haki3,fecha);
+				}
+				
+			}
+			else{
+				revolucionario* rv = new revolucionario(raza,edad,nombre,haki1,haki2,haki3,fecha);	
+			}
 
 		}
 		cout << "Desea continuar agregando S/N :" ;
