@@ -4,7 +4,7 @@ seres::seres(string type , int age , string name, fruta* fr, bool haki1, bool ha
 
 	raza=type;
 	edad = age;
-	nombre name;
+	nombre =name;
 	fruit =fr;
 	hakiob=haki1;
 	hakiar=haki2;
@@ -17,7 +17,7 @@ seres::seres(string type , int age , string name, bool haki1, bool haki2, bool h
 
 	raza=type;
 	edad = age;
-	nombre name;
+	nombre = name;
 	hakiob=haki1;
 	hakiar=haki2;
 	hakirey=haki3;

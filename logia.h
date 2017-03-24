@@ -4,10 +4,10 @@
 #include <string>
 using namespace std;
 
-class paramecia : public fruta{
+class logia : public fruta{
 protected:
-	string descripcion;
+	string elemento;
 public:
-	paramecia(string,string );
-	string getdescripcion();
+	logia(string,string);
+	string getelemento();
 };

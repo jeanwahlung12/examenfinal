@@ -4,6 +4,6 @@ fruta::fruta(string name){
 	nombre=name;
 }
 
-string getnombre(){
+string fruta:: getnombre(){
 	return nombre;
 }
