@@ -8,21 +8,78 @@
 #include "piratas.h"
 #include <vector>
 #include <fstream>
+#include <sstream>
+
 using namespace std;
+void creararchivo(seres*);
+void escribir(string,seres*);
 int main(){
 	vector<fruta*> frutas;
 	vector<seres*> seres;
+	paramecia* p = new paramecia("Hana Hana", "Florecer");
 
 	paramecia* par = new paramecia("Gomumu", "Hombre de goma");
+	paramecia* p2 = new paramecia("Yomi Yomi", "Renacer");
+	paramecia* p3 = new paramecia("Horu Horu", "MOdificar el cuerpo humano");
+	logia* l = new logia("Pika pika","transformacion");
 	zoan* zo = new zoan("Hito Hito",  "transformacion"," Humano");
 	piratas* pir = new piratas("Humano", 19 , " Monkey D. Luffy" ,par,true,true,true,"East Blue","Piratas de Sombrero De Paja" , "Lider");
+	creararchivo(pir);
 	piratas* pir2 = new piratas("Humano", 19 , " Roronoa Zoro " ,true,true,false,"East Blue","Tripulacion de Luffy" , "Espadachin");
 	piratas* pir3 = new piratas("Humano", 18 , " Nami" ,false,false,false,"East Blue","Tripulacion de Luffy" , "Navegante");
 	piratas* pir4 = new piratas("Humano", 19 , " Usopp" ,true,false,false,"East Blue","Tripulacion De Luffy" , "Francotirado");
 	piratas* pir5 = new piratas("Humano", 19 , " Vinsmoke Sanji" ,true,true,false,"North Blue","Tripulacion De Luffy" , "Cocinero");
 	piratas* pir6 = new piratas("Reno", 15 , " Tony Tony Chopper" ,zo,false,false,false,"East Blue","Tripulacion de Luffy" , "Medico");
-	piratas* pir7 = new piratas("Reno", 15 , "Nico Robin" ,zo,false,false,false,"East Blue","Tripulacion de Luffy" , "Medico");
+	piratas* pir7 = new piratas("Humana", 28 , "Nico Robin" ,p,false,false,false,"West Blue","Tripulacion de Luffy" , "Arqueologa");
+	piratas* pir8 = new piratas("Cyborg", 34 , "Franky" ,false,false,false,"South Blue","Tripulacion de Luffy" , "Carpintero naval");
+	piratas* pir9 = new piratas("Esqueleto", 88 , "Brook" ,p,false,false,false,"West Blue","Tripulacion de Luffy" , "Musico Espadachin");
+	marina* mr1 = new marina("Humano", 58 , "Borsalino" ,l,true,true,false," 23 de noviembre" , "Almirante");
+	marina* mr2 = new marina("Humano", 48 , "Issho" ,true,true,false," 10 de agosto" , "Almirante");
+	marina* mr3 = new marina("Humano", 41 , "Kuzan" ,true,true,false," 21 de septiembre" , "Almirante");
+	marina* mr4 = new marina("Humano", 55 , "Sakazuki" ,true,true,false," 16 de noviembre" , "Almirante de la flota");
+	revolucionario* r1 = new revolucionario("Humano", 0 , "Monkey D Dragon" ,l,true,true,true," 5 de octubre");
+	revolucionario* r2 = new revolucionario("Humano", 0 , "Emporio Ivankov" ,p3,true,true,false," 8 de Enero");
+	revolucionario* r3 = new revolucionario("Humano", 22 , "Sabo" ,true,true,false," 20 de Marzo");
+	creararchivo(pir2);
+	creararchivo(pir3);
+	creararchivo(pir4);
+	creararchivo(pir5);
+	creararchivo(pir6);
+	creararchivo(pir7);
+	creararchivo(pir8);
+	creararchivo(pir9);
+	creararchivo(mr1);
+	creararchivo(mr2);
+	creararchivo(mr3);
+	creararchivo(mr4);
+	creararchivo(r1);
+	creararchivo(r2);
+	creararchivo(r3);
+
 	seres.push_back(pir);
+	seres.push_back(pir2);
+	seres.push_back(pir3);
+	seres.push_back(pir4);
+	seres.push_back(pir5);
+	seres.push_back(pir6);
+	seres.push_back(pir7);
+	seres.push_back(pir8);
+	seres.push_back(pir9);
+
+	seres.push_back(mr1);
+	seres.push_back(mr2);
+	seres.push_back(mr3);
+	seres.push_back(mr4);
+	seres.push_back(r1);
+	seres.push_back(r2);
+	seres.push_back(r3);
+	frutas.push_back(p);
+	frutas.push_back(par);
+	frutas.push_back(p2);
+	frutas.push_back(p3);
+	frutas.push_back(l);
+	frutas.push_back(zo);
+
 	char resp='s';
 	while(resp =='s' || resp=='S'){
 		int op;
@@ -68,6 +125,7 @@ int main(){
 				cout << "ingrese la descripcion :" ;
 				cin >> description;
 				parame = new paramecia(nomfruto,description);
+				frutas.push_back(parame);
 			}
 			else if (opfruto==2){
 				string tipofruta;
@@ -77,12 +135,14 @@ int main(){
 				cout << "ingrese el animal :";
 				cin >> animal;
 				zo2 = new zoan (nomfruto,tipofruta,animal);
+				frutas.push_back(zo2);
 			}
 			else if(opfruto==3){
 				string elemento;
 				cout << "ingrese el elemento :";
 				cin >> elemento;
 				log = new logia(nomfruto,elemento);
+				frutas.push_back(log);
 			}
 
 			
@@ -143,17 +203,25 @@ int main(){
 			if(ophak==1){
 				if(opfruto==1){
 					marina* mar = new marina(raza,edad,nombre,parame,haki1,haki2,haki3,fecha,rango);
+					seres.push_back(mar);
+					creararchivo(mar);
 				}
 				else if(opfruto==2){
 					marina* mar = new marina(raza,edad,nombre,zo2,haki1,haki2,haki3,fecha,rango);
+					seres.push_back(mar);
+					creararchivo(mar);
 				}
 				else if(opfruto==3){
 					marina* mar = new marina(raza,edad,nombre,log,haki1,haki2,haki3,fecha,rango);
+					seres.push_back(mar);
+					creararchivo(mar);
 				}
 				
 			}
 			else{
 				marina* mar = new marina(raza,edad,nombre,haki1,haki2,haki3,fecha,rango);	
+				seres.push_back(mar);
+				creararchivo(mar);
 			}
 
 		}
@@ -170,17 +238,25 @@ int main(){
 			if(ophak==1){
 				if(opfruto==1){
 					piratas* pr = new piratas(raza,edad,nombre,parame,haki1,haki2,haki3,oceano,tripulacio,funcion);
+					seres.push_back(pr);
+					creararchivo(pr);
 				}
 				else if(opfruto==2){
 					piratas* pr = new piratas(raza,edad,nombre,zo2,haki1,haki2,haki3,oceano,tripulacio,funcion);
+					seres.push_back(pr);
+					creararchivo(pr);
 				}
 				else if(opfruto==3){
 					piratas* pr = new piratas(raza,edad,nombre,log,haki1,haki2,haki3,oceano,tripulacio,funcion);
+					seres.push_back(pr);
+					creararchivo(pr);
 				}
 				
 			}
 			else{
 				piratas* pr = new piratas(raza,edad,nombre,haki1,haki2,haki3,oceano,tripulacio,funcion);	
+				seres.push_back(pr);
+				creararchivo(pr);
 			}
 
 
@@ -193,17 +269,25 @@ int main(){
 			if(ophak==1){
 				if(opfruto==1){
 					revolucionario* rv = new revolucionario(raza,edad,nombre,parame,haki1,haki2,haki3,fecha);
+					seres.push_back(rv);
+					creararchivo(rv);
 				}
 				else if(opfruto==2){
 					revolucionario* rv = new revolucionario(raza,edad,nombre,zo2,haki1,haki2,haki3,fecha);
+					seres.push_back(rv);
+					creararchivo(rv);
 				}
 				else if(opfruto==3){
 					revolucionario* rv = new revolucionario(raza,edad,nombre,log,haki1,haki2,haki3,fecha);
+					seres.push_back(rv);
+					creararchivo(rv);
 				}
 				
 			}
 			else{
 				revolucionario* rv = new revolucionario(raza,edad,nombre,haki1,haki2,haki3,fecha);	
+				seres.push_back(rv);
+				creararchivo(rv);
 			}
 
 		}
@@ -212,4 +296,52 @@ int main(){
 	}// fin while resp
 
 	return 0;
+}
+
+
+void creararchivo(seres* per){
+	
+
+	
+	string ruta = "./log_nombres/";
+		
+		
+		string archivo = per->getnombre()+".log";
+		
+		string rutatotal= ruta+archivo;
+		FILE* arch;
+		
+		if(arch = fopen(rutatotal.c_str(),"a"))
+			cout << " el archivo a sido creado correctamente" << endl;
+		escribir( archivo, per);	
+
+		
+
+}
+
+
+
+void escribir(string ruta, seres* per){
+	ofstream archivo;
+	stringstream stringStream;
+	string myString;
+	stringStream << "./log_nombres/" << ruta;
+	myString = stringStream.str();
+	archivo.open(myString.c_str());
+
+	if(archivo.fail()){
+		cout << " no se pudo abrir " << endl;
+	}
+	archivo << "la Raza es:" << per->getraza() << endl;
+	archivo << "la edad :" << per->getedad() << endl;
+	archivo << " El nombre es : " << per->getnombre() << endl;
+
+
+	archivo << "haki Observacion:" << per->gethakiob() << endl;
+	archivo << "haki armas :" << per->gethakiar() << endl;
+	archivo << "haki Rey :" << per->gethakirey() << endl;
+
+
+	archivo.close();
+
 }
